@@ -22,7 +22,7 @@ class Board
 
   def init_hash
     new_hash = {}
-    (1..9).each { |i| new_hash[i] = " " }
+    (1..9).each { |i| new_hash[i] = ' ' }
     new_hash
   end
 end
