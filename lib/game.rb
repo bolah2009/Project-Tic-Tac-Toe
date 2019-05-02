@@ -1,6 +1,8 @@
 require_relative 'board'
+require_relative 'helper'
 # Game Class
 class Game
+  include Helper
   def initialize
     @new_board = Board.new
     @current_player = ""
@@ -8,6 +10,8 @@ class Game
     @game_status = -1
     play_game
   end
+
+  private
 
   def play_game
     while(@game_status == -1)
@@ -20,10 +24,10 @@ class Game
     end
     if(@game_status == 1)
       display_board
-      puts "Player #{@current_player} won"
+      player_win(@current_player)
     else
       display_board
-      puts "It's a draw"
+      player_draw
     end
   end
 
@@ -32,18 +36,7 @@ class Game
   end
 
   def check_game_status
-    lines = [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9],
-      [1, 4, 7],
-      [2, 5, 8],
-      [3, 6, 9],
-      [1, 5, 9],
-      [3, 5, 7]
-    ]
-
-    lines.each do |i|
+    LINES.each do |i|
       if (check(i[0]) == check(i[1])) && (check(i[0]) == check(i[2]))
         return 1 if(check(i[0]) == 'X' || check(i[0]) == 'O')
       end
@@ -61,7 +54,7 @@ class Game
   end
 
   def display_status
-    puts "Player #{@current_player} is the next to play! Make your move."
+    player_status(@current_player)
   end
 
   def request_player_input
@@ -92,4 +85,4 @@ class Game
   end
 end
 
-game = Game.new
+Game.new

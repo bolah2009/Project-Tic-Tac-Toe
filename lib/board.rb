@@ -1,13 +1,13 @@
+require_relative 'helper'
 # Board class
 class Board
+  include Helper
   def initialize
     @board_hash = init_hash
   end
 
   def show_board
-    puts "#{@board_hash[1]} | #{@board_hash[2]} | #{@board_hash[3]} "
-    puts "#{@board_hash[4]} | #{@board_hash[5]} | #{@board_hash[6]} "
-    puts "#{@board_hash[7]} | #{@board_hash[8]} | #{@board_hash[9]} "
+    board(@board_hash)
   end
 
   def get_cell(position)
