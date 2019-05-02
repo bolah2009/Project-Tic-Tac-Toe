@@ -1,7 +1,7 @@
 # Board class
 class Board
   def initialize
-    @board_hash = initHash
+    @board_hash = init_hash
   end
 
   def show_board
