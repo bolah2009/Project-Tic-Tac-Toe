@@ -14,6 +14,8 @@ class Game
   private
 
   def play_game
+    welcome_message
+    game_start_instructions
     while(@game_status == -1)
       display_board
       change_current_player
@@ -29,6 +31,7 @@ class Game
       display_board
       player_draw
     end
+    game_end_instructions
   end
 
   def display_board
@@ -84,5 +87,3 @@ class Game
     return false
   end
 end
-
-Game.new
