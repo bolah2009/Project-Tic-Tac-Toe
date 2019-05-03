@@ -1,19 +1,19 @@
 # Text module
 module Helper
   def welcome_message
-    puts '=========TIC-TAC-TOE========='
-    puts 'Welcome to the TIC-TAC-TOE game!'
+    puts "\n\n=========TIC-TAC-TOE========="
+    puts "\nWelcome to the TIC-TAC-TOE game!"
   end
 
-  def game_instructions
-    puts "The first player is 'Player X'"
-    puts 'Choose numbers from 1 to 9 to select desired cell.'
-    puts 'No duplicate numbers are allowed'
+  def game_start_instructions
+    puts "\nThe first player is 'Player X'"
+    puts "\nChoose numbers from 1 to 9 to select desired cell."
+    puts "\nNo duplicate numbers are allowed\n"
   end
 
   def game_end_instructions
-    puts '==== GAME END ===='
-    puts "To play again run 'ruby bin/tictactoe.rb'"
+    puts "==== GAME END ====\n\n"
+    puts "To play again run 'ruby bin/tictactoe.rb'\n"
   end
 
   def player_win(current_player)
@@ -44,7 +44,7 @@ module Helper
   ].freeze
 
   def board(hash)
-    puts "-------------\n| #{hash[1]} | #{hash[2]} | #{hash[3]} |"
+    puts "\n-------------\n| #{hash[1]} | #{hash[2]} | #{hash[3]} |"
     puts "-------------\n| #{hash[4]} | #{hash[5]} | #{hash[6]} |"
     puts "-------------\n| #{hash[7]} | #{hash[8]} | #{hash[9]} |"
     puts "-------------\n\n"
