@@ -1,3 +1,4 @@
 load 'lib/game.rb'
 
-play_game = Game.new
+tictactoe = Game.new
+tictactoe.play_game

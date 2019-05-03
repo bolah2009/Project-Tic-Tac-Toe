@@ -5,18 +5,15 @@ class Game
   include Helper
   def initialize
     @new_board = Board.new
-    @current_player = ""
+    @current_player = ''
     @input_count = 0
     @game_status = -1
-    play_game
   end
-
-  private
 
   def play_game
     welcome_message
     game_start_instructions
-    while(@game_status == -1)
+    while @game_status == -1
       display_board
       change_current_player
       display_status
@@ -24,7 +21,7 @@ class Game
       assign_player_input(input)
       @game_status = check_game_status
     end
-    if(@game_status == 1)
+    if @game_status == 1
       display_board
       player_win(@current_player)
     else
@@ -34,6 +31,8 @@ class Game
     game_end_instructions
   end
 
+  private
+
   def display_board
     @new_board.show_board
   end
@@ -41,11 +40,12 @@ class Game
   def check_game_status
     LINES.each do |i|
       if (check(i[0]) == check(i[1])) && (check(i[0]) == check(i[2]))
-        return 1 if(check(i[0]) == 'X' || check(i[0]) == 'O')
+        return 1 if check(i[0]) == 'X' || check(i[0]) == 'O'
       end
     end
-    return 0 if(@input_count == 9)
-    return -1
+    return 0 if @input_count == 9
+
+    -1
   end
 
   def check(index)
@@ -62,9 +62,7 @@ class Game
 
   def request_player_input
     input = gets.chomp.to_i
-    until is_valid_input(input)
-      input = gets.chomp.to_i
-    end
+    input = gets.chomp.to_i until is_valid_input(input)
     input
   end
 
@@ -74,16 +72,16 @@ class Game
   end
 
   def is_valid_input(input)
-    if((input.is_a? Integer) && (input > 0 && input < 10))
-      if(check(input) == ' ')
+    if (input.is_a? Integer) && (input > 0 && input < 10)
+      if check(input) == ' '
         return true
       else
-        puts "Please select an available position instead"
+        puts 'Please select an available position instead'
       end
     else
-      puts "Wrong type of input"
-      puts "Please select an integer between 1 and 9"
+      puts 'Wrong type of input'
+      puts 'Please select an integer between 1 and 9'
     end
-    return false
+    false
   end
 end
