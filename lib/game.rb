@@ -1,6 +1,6 @@
 require_relative 'board'
 require_relative 'player'
-# Game Class
+
 class Game
   def initialize
     @board = Board.new
@@ -17,6 +17,8 @@ class Game
       switch_player
     end
   end
+
+  private
 
   def switch_player
     @current_player = @current_player == @player_1 ? @player_2 : @player_1

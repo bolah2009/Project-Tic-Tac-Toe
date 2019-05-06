@@ -17,6 +17,8 @@ class Player
     end
   end
 
+  private
+
   def get_position
     puts "#{name}(#{@symbol}): It's your turn. Make your move!"
     gets.chomp.to_i

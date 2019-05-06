@@ -1,7 +1,4 @@
-require_relative 'helper'
-# Board class
 class Board
-  include Helper
   def initialize
     @board = Array.new(9)
   end
