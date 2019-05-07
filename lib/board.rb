@@ -1,19 +1,13 @@
+require_relative 'UI'
+
 class Board
+  include UI
   def initialize
     @board = Array.new(9)
   end
 
   def render
-    puts "-------------"
-    @board.each_slice(3) do |slice|
-      print("| ")
-      slice.each do|cell|
-        cell.nil? ? print("-") : print(cell)
-        print(" | ")
-      end
-      print("\n")
-    end
-    puts "-------------"
+    board(@board)
   end
 
   def assigning_value(position, value)
@@ -28,36 +22,20 @@ class Board
 
   def winning_cases?(symbol)
     winning?(horizontals, symbol) ||
-    winning?(verticals, symbol) ||
-    winning?(diagonals, symbol)
+      winning?(verticals, symbol) ||
+      winning?(diagonals, symbol)
   end
 
   def full?
-    @board.none? { |cell| cell.nil? }
+    @board.none?(&:nil?)
   end
 
   private
 
   def valid_position?(position)
-    if within_valid_position?(position)
-      position_available?(position)
-    end
-  end
+    return true if @board[position].nil?
 
-  def position_available?(position)
-    if (@board[position].nil?)
-      true
-    else
-      puts "This position was already taken! Choose another one."
-    end
-  end
-
-  def within_valid_position?(position)
-    if (0..8).include?(position)
-      true
-    else
-      puts "Position out of bounds"
-    end
+    taken_position
   end
 
   def winning?(array, symbol)

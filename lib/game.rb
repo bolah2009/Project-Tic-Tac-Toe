@@ -1,11 +1,11 @@
-require_relative 'board'
-require_relative 'player'
+require_relative 'UI'
 
 class Game
-  def initialize
-    @board = Board.new
-    @player_1 = Player.new("Thor", "X", @board)
-    @player_2 = Player.new("Hulk", "O", @board)
+  include UI
+  def initialize(player1, player2, board)
+    @board = board
+    @player_1 = player1
+    @player_2 = player2
     @current_player = @player_1
   end
 
@@ -14,6 +14,7 @@ class Game
       @board.render
       @current_player.get_player_input
       break if game_over?
+
       switch_player
     end
   end
@@ -31,7 +32,7 @@ class Game
   def victory?
     if @board.winning_cases?(@current_player.symbol)
       @board.render
-      puts "Congratulations #{@current_player.name}, you won"
+      win_message
       true
     else
       false
@@ -41,7 +42,7 @@ class Game
   def draw?
     if @board.full?
       @board.render
-      puts "Too bad. It's a draw."
+      draw_message
       true
     else
       false
