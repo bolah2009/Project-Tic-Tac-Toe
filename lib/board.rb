@@ -1,13 +1,14 @@
 require_relative 'UI'
 
 class Board
+  attr_accessor :board
   include UI
   def initialize
     @board = Array.new(9)
   end
 
   def render
-    board(@board)
+    render_board(board)
   end
 
   def assigning_value(position, value)

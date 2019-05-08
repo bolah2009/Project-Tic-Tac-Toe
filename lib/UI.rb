@@ -36,7 +36,7 @@ module UI
     puts "Too bad. It's a draw."
   end
 
-  def board(board_data)
+  def render_board(board_data)
     puts '-------------'
     board_data.each_slice(3) do |slice|
       print('| ')

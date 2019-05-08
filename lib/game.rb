@@ -2,6 +2,7 @@ require_relative 'UI'
 
 class Game
   include UI
+  attr_reader :current_player
   def initialize(player1, player2, board)
     @board = board
     @player_1 = player1
