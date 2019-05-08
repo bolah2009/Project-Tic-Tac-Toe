@@ -7,6 +7,7 @@ class Game
     @player_1 = player1
     @player_2 = player2
     @current_player = @player_1
+    @winning_combo
   end
 
   def play_game
