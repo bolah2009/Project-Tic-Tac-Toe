@@ -14,6 +14,7 @@ class Player
       position = get_position
 
       break if @board.assigning_value(position, @symbol)
+      taken_position
     end
   end
 

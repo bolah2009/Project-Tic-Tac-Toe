@@ -19,7 +19,6 @@ module UI
     end
   end
 
-
   def taken_position
     puts 'This position was already taken! Choose another one.'
   end

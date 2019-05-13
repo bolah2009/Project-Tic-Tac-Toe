@@ -17,6 +17,7 @@ class Board
       @board[position] = value
       true
     else
+
       false
     end
   end
@@ -36,7 +37,7 @@ class Board
   def valid_position?(position)
     return true if @board[position].nil?
 
-    taken_position
+    false
   end
 
   def winning?(array, symbol)

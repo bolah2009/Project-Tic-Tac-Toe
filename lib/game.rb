@@ -5,18 +5,22 @@ class Game
   attr_reader :current_player
   def initialize(player1, player2, board)
     @board = board
-    @player_1 = player1
-    @player_2 = player2
-    @current_player = @player_1
-    @winning_combo
+    @player1 = player1
+    @player2 = player2
+    @current_player = @player1
   end
 
   def play_game
     loop do
       @board.render
       @current_player.get_player_input
-      break if game_over?
-
+      if victory?
+        @board.render
+        return win_message
+      elsif draw?
+        @board.render
+        return draw_message
+      end
       switch_player
     end
   end
@@ -24,30 +28,18 @@ class Game
   private
 
   def switch_player
-    @current_player = @current_player == @player_1 ? @player_2 : @player_1
-  end
-
-  def game_over?
-    victory? || draw?
+    @current_player = @current_player == @player1 ? @player2 : @player1
   end
 
   def victory?
-    if @board.winning_cases?(@current_player.symbol)
-      @board.render
-      win_message
-      true
-    else
-      false
-    end
+    return true if @board.winning_cases?(@current_player.symbol)
+
+    false
   end
 
   def draw?
-    if @board.full?
-      @board.render
-      draw_message
-      true
-    else
-      false
-    end
+    return true if @board.full?
+
+    false
   end
 end
